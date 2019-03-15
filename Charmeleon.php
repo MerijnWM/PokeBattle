@@ -1,0 +1,6 @@
+<?
+
+class Charmeleon extends Pokemon
+{
+
+}
