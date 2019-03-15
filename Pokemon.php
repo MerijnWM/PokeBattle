@@ -2,12 +2,15 @@
 
 class Pokemon
 {
-	public $name, $energy_type, $hitpoints, $healht, $attacks, $weakness, $resistance;
+	public $name, $energyType, $hitpoints, $healht, $attacks, $weakness, $resistance;
 
-	public function attack(){
-
+	public function attack($attack, $target){
+		
 	}
 
+	public function __toString() {
+        return json_encode($this);
+    }
 
 
 }	

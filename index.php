@@ -6,11 +6,12 @@ spl_autoload_register(function($class) {
 
 
 $pikachu = new pikachu('pikachu');
+$charmeleon = new Charmeleon('charmeleon');
 
 echo $pikachu->name;
-echo "<br>";
-echo $pikachu->energy_type;
 echo '<br>';
-echo $pikachu->hitpoints;
+echo $pikachu;
 echo "<br>";
-echo $pikachu->weakness;
+echo $charmeleon->name;
+echo "<br>";
+echo $charmeleon;
