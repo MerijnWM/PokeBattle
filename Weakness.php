@@ -3,10 +3,10 @@
 class Weakness
 {
 
-	public $weakness, $multiplier;
+	public $energyType, $multiplier;
 
 	public function __construct($energyType, $multiplier){
-		$this->weakness = $energyType;
+		$this->energyType = $energyType;
 		$this->multiplier = $multiplier;
 	}
 
