@@ -5,27 +5,30 @@ spl_autoload_register(function($class) {
 });
 
 
-$pikachu = new pikachu('pikachu');
+$pikachu = new Pikachu('pikachu');
 $charmeleon = new Charmeleon('charmeleon');
 
-$pikachu->attack($pikachu->attacks[0],$charmeleon);
-$charmeleon->attack($charmeleon->attacks[1],$pikachu);
+echo $charmeleon->getName() . '<br>';
+print($charmeleon->getHealth());
+echo '<br>';
+$pikachu->attack('Electric Ring',$charmeleon);
+print($charmeleon->getHealth());
 
-echo '<br> <br>';
+echo '<br>'. $pikachu->getName() . '<br>';
+print($pikachu->getHealth());
+$charmeleon->attack('Flare',$pikachu);
+echo '<br>';
+print($pikachu->getHealth());
 
 $pokebag =  new PokeBag();
 $pokebag->add($charmeleon);
 $pokebag->add($pikachu);
 
-print_r($pokebag);
+var_dump($pokebag);
+var_dump($pokebag->getPokemons());
 
-echo '<br><br>';
-echo $pokebag->getPokemons();
-
-$pokebag->remove($charmeleon->name);
-
-echo '<br>';
-print_r($pokebag);
+$pokebag->remove($charmeleon->getName());
+var_dump($pokebag);
 
 
 

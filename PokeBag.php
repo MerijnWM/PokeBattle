@@ -2,47 +2,49 @@
 
 class PokeBag
 {
-	public $bag;
+	private $bag;
 
 	public function add($pokemon){
+
 		for($y = 0; $y < count($this->bag); $y++){
 
-			if($this->bag[$y]->name == $pokemon->name){
-				echo 'Kan niet 2 pokemon met de zelfde naam in de pokebag hebben. <br>';
-				return;
+			if($this->bag[$y] == $pokemon->getName()){
+				return 'Kan niet 2 pokemon met de zelfde naam in de pokebag hebben.';
 			}
-		}
+		}  
+
 		if(count($this->bag) < 10){
 			$this->bag[] = $pokemon;
 
 		}else{
-			echo 'Je pokebag zit vol';
+			return 'Je pokebag zit vol';
 		}
 	}
 
-	public function remove($pokemon){
+	public function remove($pokemonName){
 
 		for($y = 0; $y < count($this->bag); $y++){
-
-			if($this->bag[$y]->name == $pokemon){
+	
+			if($this->bag[$y]->getName() == $pokemonName){
 				unset($this->bag[$y]);
+				return;
 			}
 		}
 	}
 
 	public function getPokemons(){
-		for($y = 0; $y < count($this->bag); $y++){
 
-			echo $this->bag[$y]->name . '<br>';			
+		foreach($this->bag as $pokemon){
+
+			$pokemons[] = $pokemon->getName();			
 		}
+
+		return $pokemons;
 	}
 
 	public function deleteAll(){
 
-		for($y = 0; $y < count($this->bag); $y++){
-
-			$this->bag = NULL;			
-		}
+		$this->bag = [];		
 	}
 
 	public function __toString() {
