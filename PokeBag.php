@@ -8,7 +8,7 @@ class PokeBag
 
 		for($y = 0; $y < count($this->bag); $y++){
 
-			if($this->bag[$y] == $pokemon->getName()){
+			if($this->bag[$y]->getName() == $pokemon->getName()){
 				return 'Kan niet 2 pokemon met de zelfde naam in de pokebag hebben.';
 			}
 		}  

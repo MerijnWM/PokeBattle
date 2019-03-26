@@ -4,12 +4,7 @@ class Pokemon
 {
 	protected $name, $energyType, $hitpoints, $health, $attacks, $weakness, $resistance;
 
-	public function takeDamage($damage){
-		$this->health -= $damage;
-	}
-
 	public function attack($attackName, $target){
-
 		foreach($this->attacks as $assault){
 			
 			if($assault->getAttack() == $attackName){
@@ -18,20 +13,25 @@ class Pokemon
 				continue;
 			}
 		}
+
+		$target->takeDamage($attack, $this->energyType);
+	}
+
+	public function takeDamage($attack, $energyType){		
 		
-		if($this->energyType == $target->weakness->getEnergyType()){
+		if($energyType == $this->weakness->getEnergyType()){
 
-			$damage = $target->weakness->getMultiplier() * $attack->getDamage();
-			$target->takeDamage($damage);			
+			$damage = $this->weakness->getMultiplier() * $attack->getDamage();
+			$this->health -= $damage;			
 
-		}else if($this->energyType == $target->resistance->getEnergyType()){
+		}else if($energyType == $this->resistance->getEnergyType()){
 			
-			$damage = $attack->getDamage() - $target->resistance->getValue();			
+			$damage = $attack->getDamage() - $this->resistance->getValue();			
 			if($damage > 0){
-				$target->takeDamage($damage);
+				$this->health -= $damage;
 			}
 		}else{	
-			$target->takeDamage($attack->getDamage());		
+			$this->health -= $attack->getDamage();
 		}
 	}	
 
